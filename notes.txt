@@ -1,0 +1,103 @@
+<!-- for header: -->
+- in index <?php get_header(); ?>
+- in header <?php wp_head(); ?> </head>
+
+<!-- Link css: -->
+- in functions.php 
+		<?php 
+		function university_files()
+		{
+			wp_enqueue_style('university_main_styles', get_stylesheet_uri());
+		}
+		add_action('wp_enqueue_scripts', 'university_files');
+
+// link js
+		wp_enqueue_script('main-university-js', get_theme_file_uri('/js/scripts-bundled.js'), NULL, '1.0', true);
+
+// Link fonts if in index.php exist link
+- in functions.php
+		<?php 
+		function university_files()
+		{
+			wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+		}
+
+// change link for images
+- in index wrap url:
+	url(<?php echo get_theme_file_uri('images/library-hero.jpg') ?>);
+ 
+//Avoid caching css&js
+	- for js: 
+	change version: 
+	wp_enqueue_script('main-university-js', get_theme_file_uri('/js/scripts-bundled.js'), NULL, '1.0', true);
+	to 
+	wp_enqueue_script('main-university-js', get_theme_file_uri('/js/scripts-bundled.js'), NULL, microtime(), true);
+
+	- for css: 
+	wp_enqueue_style('university_main_styles', get_stylesheet_uri(), NULL, microtime());
+
+  - NULL is means that file dont have any dependencies
+
+/************ PAGE CREATING **************/
+- in admin create page > create page.php with layout
+- use: 
+--<?php the_title(); ?> title admin page
+--<?php the_content(); ?> content admin page
+
+- for replace link for images:
+	url(<?php echo get_theme_file_uri('/images/ocean.jpg')?>)
+
+- Title for page tab
+-- function
+<?php  
+	function university_features()
+	{
+		add_theme_support('title-tag');
+	}
+
+	add_action('after_setup_theme', 'university_features');
+
+- Links for pages: 
+	href="<?php echo site_url('/about-us/') ?>"
+	for homepage
+	href="<?php echo site_url() ?>"
+?>
+<?php  
+
+/*** parrent & children pages ***/	 ?>
+- show bread crumbs
+-- if statement, true that child page <?php  
+	if (wp_get_post_parent_id(get_the_ID())) {
+        echo "eee";
+- show exact parent name
+	<?php echo get_the_title(); ?> - in () can paste ID also like <?php echo get_pemalink(); ?>">
+  
+?>
+<!-- Echo explanation-->
+echo its like return but you can use the result of function
+
+<!-- Menu of children page links -->
+
+- wp_list_pages(); -show all pages in UL
+
+<ul class="min-list">
+        <?php 
+          if ($theParent) {
+            $findChildrenOf = $theParent;
+          } else{
+            $findChildrenOf = get_the_ID();
+          }
+
+          wp_list_pages(array(
+            'title_li' => NULL,
+            'child_of' => $findChildrenOf
+          ));
+         ?>
+      </ul>
+-title menu
+--<?php echo get_the_title($theParent); ?> if you on parent page its return 0 and its show current page
+
+- orderring list of child 
+<?php  
+ 'sort_column' => 'menu_order'
+-- in admin at each page adjust order (left sidebar)
