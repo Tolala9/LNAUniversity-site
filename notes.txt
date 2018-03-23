@@ -74,7 +74,9 @@
   
 ?>
 <!-- Echo explanation-->
-echo its like return but you can use the result of function
+--echo its like return but you can use the result of function
+-- if function begins of "get", use echo
+ 
 
 <!-- Menu of children page links -->
 
@@ -120,3 +122,46 @@ echo its like return but you can use the result of function
 <!-- display active menu tab if on the same page or on the ancestors pages -->
 <li <?php if (is_page('about-us') or wp_get_post_parent_id(0) == 5) echo "class='current-menu-item'"; ?>><a href="<?php echo site_url('/about-us/') ?>">About Us</a></li>
 alternative : is_page('about-us') or wp_get_post_parent_id(is_page('about-us'))
+
+
+
+<!-- Creating blog page -->
+--make front-page.php (copy cont index)
+-- index.php will be blog page 
+--- many content copied from page.php to index.php
+--- spandart loop for displaing posts
+while (have_posts()) {
+			the_post(); ?>
+
+			<div class="post-item">
+				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+--- <?php the_excerpt(); ?> - display short description of post 
+---instead of anatolii > <?php the_author_posts_link(); ?>
+---instead date > <?php the_time('n.j.y'); ?>
+---instead of category > <?php echo get_the_category_list(', '); ?>
+
+<!-- pagination --> <?php  
+echo paginate_links();
+
+
+- single.php its page of single post
+- page.php for individual pages
+
+
+/* Archives*/
+--create archive.php > copy from index.php
+---title for page: <?php if (is_category()) {
+      	single_cat_title();
+      } 
+      if (is_author()) {
+      	echo "Posts by "; the_author();
+      } ?>
+		or <?php the_archive_title(); ?>
+
+---description  <?php the_archive_description(); ?>
+	pull from admin > user > biografical info (for author)
+	pull from admin > category > description (for category)
+
+
+<!-- Custom Queries -->
+
