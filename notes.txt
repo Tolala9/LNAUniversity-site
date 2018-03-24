@@ -162,6 +162,42 @@ echo paginate_links();
 	pull from admin > user > biografical info (for author)
 	pull from admin > category > description (for category)
 
-
+ 
 <!-- Custom Queries -->
+<?php 
+--recent posts in front-page.php
+---
+$homepagePosts = new Wp_Query();
+	object              class
 
+	$dog = new Animal();
+
+	$dog->drinkWater();
+
+--default query
+while (have_posts()) {
+    the_post(); ?>
+    <li><?php the_title(); ?></li>
+  <?php }
+
+--custom query
+		$homepagePosts = new Wp_Query(array(
+		    'posts_per_page' => 2
+		    
+		));
+
+		while ($homepagePosts->have_posts()) {
+		  $homepagePosts->the_post(); ?>
+		  <li><?php the_title(); ?></li>
+		<?php } wp_reset_postdata(); ?>
+
+--- can use parameters 
+ 'category_name' => 'award'
+ 'post_type' => 'post' or 'page'
+
+
+
+-- if content of posts are too long 
+instead of the_content(); you can use the_excerpt();
+but u can customize that with
+<?php echo wp_trim_words(get_the_content(), 2); ?>
