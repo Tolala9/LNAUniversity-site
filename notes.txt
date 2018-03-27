@@ -1,18 +1,23 @@
-<!-- for header: -->
+<!-- ========== LINKING ========== -->
+<!-- for header: --> or footer
 - in index <?php get_header(); ?>
 - in header <?php wp_head(); ?> </head>
 
 <!-- Link css: -->
 - in functions.php 
+--for non caching microtime()
 		<?php 
 		function university_files()
 		{
-			wp_enqueue_style('university_main_styles', get_stylesheet_uri());
+			wp_enqueue_style('university_main_styles', get_stylesheet_uri(), NULL, microtime() ); 
 		}
 		add_action('wp_enqueue_scripts', 'university_files');
 
+
 // link js
+--for non caching microtime() istead 1.0
 		wp_enqueue_script('main-university-js', get_theme_file_uri('/js/scripts-bundled.js'), NULL, '1.0', true);
+
 
 // Link fonts if in index.php exist link
 - in functions.php
@@ -26,9 +31,10 @@
 - in index wrap url:
 	url(<?php echo get_theme_file_uri('images/library-hero.jpg') ?>);
  
+
 //Avoid caching css&js
 	- for js: 
-	change version: 
+	change version:  
 	wp_enqueue_script('main-university-js', get_theme_file_uri('/js/scripts-bundled.js'), NULL, '1.0', true);
 	to 
 	wp_enqueue_script('main-university-js', get_theme_file_uri('/js/scripts-bundled.js'), NULL, microtime(), true);
@@ -38,7 +44,29 @@
 
   - NULL is means that file dont have any dependencies
 
+// link to some page of site: 
+---<?php echo site_url('/blog') ?>
+
+
+
+
+
+<?php 
+/************ some adjustments **************/
+/*-some adjustings for site*/
+--- change <html lang="en"> to <html <?php language_attributes(); ?>>
+---<meta charset="UTF-8"> to <meta charset="<?php bloginfo('charset'); ?>">
+--- add to body tag <body <?php body_class(); ?>>
+
+
+
+
+
+
+
+<?php  
 /************ PAGE CREATING **************/
+
 - in admin create page > create page.php with layout
 - use: 
 --<?php the_title(); ?> title admin page
@@ -63,6 +91,7 @@
 	href="<?php echo site_url() ?>"
 ?>
 <?php  
+
 
 /*** parrent & children pages ***/	 ?>
 - show bread crumbs
@@ -112,6 +141,7 @@
 
 
 
+/************ Menu **************/
 <!-- dynanic navigation menus --><?php
 --functions.php > register_nav_menu('headerMenuLocation', 'Header Menu Location');
 -- admin > new menu> add> Location
@@ -120,16 +150,19 @@
 	)); ?>
 
 <!-- display active menu tab if on the same page or on the ancestors pages -->
-<li <?php if (is_page('about-us') or wp_get_post_parent_id(0) == 5) echo "class='current-menu-item'"; ?>><a href="<?php echo site_url('/about-us/') ?>">About Us</a></li>
+<li <?php if (is_page('about-us') or wp_get_post_parent_id(0) == 5) echo "class='current-menu-item'"; ?>><a href="<?php echo site_url('/about-us/') ?>">About Us</a></li>                        <?php  
 alternative : is_page('about-us') or wp_get_post_parent_id(is_page('about-us'))
 
 
 
+
+/************ Blog CREATING **************/
 <!-- Creating blog page -->
 --make front-page.php (copy cont index)
 -- index.php will be blog page 
 --- many content copied from page.php to index.php
---- spandart loop for displaing posts
+--- spandart loop for displaing posts <?php  
+
 while (have_posts()) {
 			the_post(); ?>
 
@@ -147,7 +180,7 @@ echo paginate_links();
 - single.php its page of single post
 - page.php for individual pages
 
-
+/************ Archives CREATING **************/
 /* Archives*/
 --create archive.php > copy from index.php
 ---title for page: <?php if (is_category()) {
@@ -201,3 +234,59 @@ while (have_posts()) {
 instead of the_content(); you can use the_excerpt();
 but u can customize that with
 <?php echo wp_trim_words(get_the_content(), 2); ?>
+
+-- link to some page of site: 
+---<?php echo site_url('/blog') ?>
+
+
+-- if for blog menu item
+---<?php if (get_post_type() == 'post') echo "class='current-menu-item'"; ?>  ><a href="<?php echo site_url('/blog'); ?>
+
+
+
+  
+
+/************ Gulp **************/  Automation & workflow
+npm run gulwatch instead of gulp watch (globall command)
+npm run gulpstyles instead of gulp styles 
+npm run gulpscripts instead of gulp scripts 
+
+--install gulp
+npm install gulp-cli -g
+
+---paste 4 files to project folder
+--- gulpfile.js, package.json, settings.js, webpack.config.js 
+
+-- npm install (install what you have in package.json)
+---if packages old use
+----npm i -g npm-check-updates > ncu -u > npm install
+
+-- change path in settings.js  
+
+<?php  
+
+
+/************ Custom post types **************/
+--function.php> 
+---init new button in admin sidebar
+function university_post_types() {
+ 	register_post_type('event', array(
+ 	 'public' => true,
+ 	 'labels' => array(
+ 	 		'name' => 'Events'
+ 	 )
+ 	));
+ }
+ add_action('init', 'university_post_types');
+
+ ---- wp dashicons
+ 'menu_icon' => 'dashicons-calendar',
+
+/*must use plugins*/
+--wp-content> create new folder mu-plugins> university-post-types.php
+---paste all function to new file
+
+/* display custom posts*/
+--front-page.php
+--permalink structure update - just resave
+
