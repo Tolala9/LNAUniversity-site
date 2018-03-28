@@ -289,4 +289,18 @@ function university_post_types() {
 /* display custom posts*/
 --front-page.php
 --permalink structure update - just resave
+-- create single-event.php for custon page for event
+-- & archive-event.php
 
+-- link to archive event
+<?php echo get_post_type_archive_link('event'); ?>
+
+/* excerpts */
+-- first variant  the_excerpt() 
+but if post dont have this one fallback is 55 words
+-- <?php if (has_excerpt()){
+    echo get_the_excerpt();
+  } else{
+    echo wp_trim_words(get_the_content(), 4);
+  }
+   ?>
