@@ -11,4 +11,4 @@ var mobileMenu = new MobileMenu();
 var heroSlider = new HeroSlider();
 
 
-alert("hello");   
+// alert("hello");   
