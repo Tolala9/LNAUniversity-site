@@ -1,3 +1,6 @@
+*.sublime-project
+*.sublime-workspace
+
 # Numerous always-ignore extensions
 *.diff
 *.err
