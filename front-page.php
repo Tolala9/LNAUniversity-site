@@ -1,5 +1,5 @@
  <?php 
- get_header(); ?> 
+ get_header(); ?>  
 
     <div class="page-banner"> 
   <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('images/library-hero.jpg') ?>);"></div>
@@ -66,6 +66,7 @@
 
       </div>
     </div>
+
 
     <div class="full-width-split__two">
       <div class="full-width-split__inner">
