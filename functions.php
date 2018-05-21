@@ -13,21 +13,21 @@ add_action('wp_enqueue_scripts', 'university_files');
 
 
 function pageBanner($args = NULL) { //optional argument, not required
-		if(!$args['title']) {
-			$args['title'] = get_the_title();
-		}
+	if(!$args['title']) {
+		$args['title'] = get_the_title();
+	}
 
-		if(!$args['subtitle']) {
-			$args['subtitle'] = get_field('page_banner_subtitle');
-		}
+	if(!$args['subtitle']) {
+		$args['subtitle'] = get_field('page_banner_subtitle');
+	}
 
-		if(!$args['photo']) {
-			if (get_field('page_banner_background_image')) {
-				$args['photo'] = get_field('page_banner_background_image') ['sizes'] ['pageBanner'];
-			} else {
-				$args['photo'] = get_theme_file_uri('/images/ocean.jpg');
-			}
+	if(!$args['photo']) {
+		if (get_field('page_banner_background_image')) {
+			$args['photo'] = get_field('page_banner_background_image') ['sizes'] ['pageBanner'];
+		} else {
+			$args['photo'] = get_theme_file_uri('/images/ocean.jpg');
 		}
+	}
 
 	?>
 	<div class="page-banner">
@@ -56,6 +56,11 @@ add_action('after_setup_theme', 'university_features');
 
 
 function university_adjust_queries($query) {
+
+	if (!is_admin() AND is_post_type_archive('campus') AND $query->is_main_query()) {
+		$query->set('posts_per_page', -1); //display all post in page (not only 10)
+
+	}
 
 	if (!is_admin() AND is_post_type_archive('program') AND $query->is_main_query()) {
 		$query->set('orderby', 'title');
