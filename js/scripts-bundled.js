@@ -13660,8 +13660,12 @@ function () {
   }, {
     key: "getResults",
     value: function getResults() {
+      var _this = this;
+
       _jquery.default.getJSON('http://localhost:3000/wp-json/wp/v2/posts?search=' + this.searchField.val(), function (posts) {
-        alert(posts[0].title.rendered); //title.rendered know by postman app
+        _this.resultsDiv.html("\n\t\t\t\t\t<h2 class=\"search-overlay__section-title\">General Information</h2>\n\t\t\t\t\t<ul class=\"link-list min-list\">\n\t\t\t\t\t\t".concat(posts.map(function (item) {
+          return "<li><a href=\"".concat(item.link, "\">").concat(item.title.rendered, "</a></li>");
+        }).join(''), "\n\t\t\t\t\t</ul>\n\t\t\t\t"));
       });
     }
   }, {
