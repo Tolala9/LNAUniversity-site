@@ -13660,13 +13660,14 @@ function () {
   }, {
     key: "getResults",
     value: function getResults() {
-      this.resultsDiv.html("Imagine Real Searsh");
-      this.isSpinnerVisible = false;
+      _jquery.default.getJSON('http://localhost:3000/wp-json/wp/v2/posts?search=' + this.searchField.val(), function (posts) {
+        alert(posts[0].title.rendered); //title.rendered know by postman app
+      });
     }
   }, {
     key: "keyPressDispatcher",
     value: function keyPressDispatcher(e) {
-      if (e.keyCode == 83 && !this.isOverlayOpen) {
+      if (e.keyCode == 83 && !this.isOverlayOpen && (0, _jquery.default)("input, textarea").is(':focus')) {
         this.openOverlay();
       }
 
