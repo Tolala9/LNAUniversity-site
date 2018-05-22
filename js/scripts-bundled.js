@@ -13662,10 +13662,12 @@ function () {
     value: function getResults() {
       var _this = this;
 
-      _jquery.default.getJSON('http://localhost:3000/wp-json/wp/v2/posts?search=' + this.searchField.val(), function (posts) {
-        _this.resultsDiv.html("\n\t\t\t\t\t<h2 class=\"search-overlay__section-title\">General Information</h2>\n\t\t\t\t\t<ul class=\"link-list min-list\">\n\t\t\t\t\t\t".concat(posts.map(function (item) {
+      _jquery.default.getJSON(universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val(), function (posts) {
+        _this.resultsDiv.html("\n\t\t\t\t\t<h2 class=\"search-overlay__section-title\">General Information</h2>\n\t\t\t\t\t".concat(posts.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>', "\n\t\t\t\t\t\t").concat(posts.map(function (item) {
           return "<li><a href=\"".concat(item.link, "\">").concat(item.title.rendered, "</a></li>");
-        }).join(''), "\n\t\t\t\t\t</ul>\n\t\t\t\t"));
+        }).join(''), "\n\t\t\t\t\t").concat(posts.length ? '</ul>' : '', "\n\t\t\t\t"));
+
+        _this.isSpinnerVisible = false;
       });
     }
   }, {
