@@ -3,6 +3,9 @@
 	[
 		{
 			"path": "."
+		},
+		{
+			"path": "C:\\OpenServer\\domains\\LNAUniversity-site\\wp-content\\mu-plugins"
 		}
 	]
 }
