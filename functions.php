@@ -99,7 +99,15 @@ function universityMapKey($api) {
 
 add_filter('acf/fields/google_map/api', 'universityMapKey');
 
+// Customizing REST API
+function university_custom_rest() {
+	register_rest_field('post', 'authorName', array(
+		'get_callback' => function() {return get_the_author();}
+	));
 
+}
+
+add_action('rest_api_init', 'university_custom_rest');
 
 
 

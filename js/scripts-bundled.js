@@ -13666,8 +13666,8 @@ function () {
       _jquery.default.when(_jquery.default.getJSON(universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val()), _jquery.default.getJSON(universityData.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val())).then(function (posts, pages) {
         var combinedResults = posts[0].concat(pages[0]);
 
-        _this.resultsDiv.html("\n\t\t\t\t\t<h2 class=\"search-overlay__section-title\">General Information</h2>\n\t\t\t\t\t".concat(combinedResults.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>', "\n\t\t\t\t\t\t").concat(combinedResults.map(function (item) {
-          return "<li><a href=\"".concat(item.link, "\">").concat(item.title.rendered, "</a></li>");
+        _this.resultsDiv.html("\n\t\t\t\t\t<h2 class=\"search-overlay__section-title\">General Information</h2>\n\t\t\t\t\t".concat(combinedResults.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>', " \n\t\t\t\t\t\t").concat(combinedResults.map(function (item) {
+          return "<li><a href=\"".concat(item.link, "\">").concat(item.title.rendered, "</a> ").concat(item.type == 'post' ? "by ".concat(item.authorName) : '', "</li>");
         }).join(''), "\n\t\t\t\t\t").concat(combinedResults.length ? '</ul>' : '', "\n\t\t\t\t"));
 
         _this.isSpinnerVisible = false;
