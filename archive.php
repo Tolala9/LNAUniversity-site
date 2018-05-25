@@ -3,7 +3,7 @@
 
  <?php pageBanner(array(
   'title' => get_the_archive_title(),
-  'subtitle' => get_the_archive_description()
+  'subtitle' => get_field('page_banner_subtitle')
  )); ?>
 
 

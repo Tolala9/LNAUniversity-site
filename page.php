@@ -6,8 +6,8 @@
     the_post(); ?>
     
     <?php pageBanner(array(
-      'title' => 'Hello there this is the title',
-      'subtitle' => 'Hi, this is the subtitle',
+      'title' => get_the_title(),
+      'subtitle' => get_field('page_banner_subtitle'),
       'photo' => 'https://images.unsplash.com/photo-1510440777527-38815cfc6cc2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=06326529ec9d1ca2c6b2e8725026f699&auto=format&fit=crop&w=890&q=80',
     )); ?>
 
