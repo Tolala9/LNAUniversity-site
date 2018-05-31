@@ -13763,15 +13763,35 @@ function () {
     key: "events",
     value: function events() {
       (0, _jquery.default)(".delete-note").on("click", this.deleteNote);
-      (0, _jquery.default)(".edit-note").on("click", this.editNote);
+      (0, _jquery.default)(".edit-note").on("click", this.editNote.bind(this));
     } // Methods will go here
 
   }, {
     key: "editNote",
     value: function editNote(e) {
       var thisNote = (0, _jquery.default)(e.target).parents("li");
+
+      if (thisNote.data("state") == "editable") {
+        this.makeNoteReadOnly(thisNote);
+      } else {
+        this.makeNoteEditable(thisNote);
+      }
+    }
+  }, {
+    key: "makeNoteEditable",
+    value: function makeNoteEditable(thisNote) {
+      thisNote.find(".edit-note").html('<i class="fa fa-times" aria-hidden="true"></i>Cancel');
       thisNote.find(".note-title-field, .note-body-field").removeAttr("readonly").addClass("note-active-field");
       thisNote.find(".update-note").addClass("update-note--visible");
+      thisNote.data("state", "editable");
+    }
+  }, {
+    key: "makeNoteReadOnly",
+    value: function makeNoteReadOnly(thisNote) {
+      thisNote.find(".edit-note").html('<i class="fa fa-pencil" aria-hidden="true"></i>Edit');
+      thisNote.find(".note-title-field, .note-body-field").attr("readonly", "readonly").removeClass("note-active-field");
+      thisNote.find(".update-note").removeClass("update-note--visible");
+      thisNote.data("state", "cancel");
     }
   }, {
     key: "deleteNote",
