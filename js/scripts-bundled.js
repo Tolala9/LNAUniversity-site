@@ -13946,6 +13946,9 @@ function () {
     key: "createLike",
     value: function createLike(currentLikeBox) {
       _jquery.default.ajax({
+        beforeSend: function beforeSend(xhr) {
+          xhr.setRequestHeader('X-WP-Nonce', universityData.nonce);
+        },
         url: universityData.root_url + '/wp-json/university/v1/manageLike',
         type: 'POST',
         data: {
@@ -13953,6 +13956,10 @@ function () {
         },
         success: function success(responce) {
           console.log(responce);
+          currentLikeBox.attr('data-exists', 'yes');
+          var likeCount = parseInt(currentLikeBox.find(".like-count").html(), 10);
+          likeCount++;
+          currentLikeBox.find(".like-count").html(likeCount);
         },
         error: function error(responce) {
           console.log(responce);
