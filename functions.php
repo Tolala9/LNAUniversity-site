@@ -1,4 +1,7 @@
 <?php 
+
+
+
 require get_theme_file_path('/inc/search-route.php');
 require get_theme_file_path('/inc/like-route.php');
 
@@ -182,7 +185,15 @@ function makeNotePrivate($data, $postarr) {
  return $data;
 }
 
+/*=======Query Vars=========*/
 
+function universityQueryVars($vars) {
+
+$vars[] = 'skyColor';
+ return $vars;
+}
+
+add_filter('query_vars', 'universityQueryVars');
 
 
 ?>

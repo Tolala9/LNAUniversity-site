@@ -55,8 +55,15 @@
     
 
     <div class="generic-content">
-      <?php the_content(); ?>
+      <?php the_content(); 
+
+      if (get_query_var('skyColor') == 'blue') {
+        echo '<p> Sky is blue today! </p>';
+      }
+
+      ?>
     </div>
+
 
   </div>
     

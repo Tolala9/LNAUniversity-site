@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"get_po",
+				"get_post_type"
+			],
+			[
+				"like",
+				"likeId"
+			],
+			[
 				"p",
 				"professor"
 			],
@@ -14,10 +22,6 @@
 			[
 				"exi",
 				"existStatus"
-			],
-			[
-				"like",
-				"likeCount"
 			],
 			[
 				"get_cu",
@@ -248,66 +252,10 @@
 	"buffers":
 	[
 		{
-			"file": "header.php",
+			"file": "single-program.php",
 			"settings":
 			{
-				"buffer_size": 2777,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "page-my-notes.php",
-			"settings":
-			{
-				"buffer_size": 1866,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<?php \nget_header();\n\nwhile (have_posts()) {\n\tthe_post(); ?> \n\n\t<?php pageBanner(); ?>\n\n\n  <div class=\"container container--narrow page-section\">\n  \t\n\n  \t<div class=\"generic-content\">\n      <div class=\"row group\">\n\n        <div class=\"one-third\">\n          <?php the_post_thumbnail('professorPortrait'); ?>\n        </div>\n\n        <div class=\"two-third\">\n          <?php \n            $likeCount = new WP_Query(array(\n              'post_type' => 'like',\n              'meta_query' => array(\n                array(\n                  'key' => 'liked_professor_id',\n                  'compare' => '=',\n                  'value' => get_the_ID()\n                )\n              )\n            ));\n\n            $existStatus = 'no';\n\n             $existQuery = new WP_Query(array(\n              'author' => get_current_user_id(),\n              'post_type' => 'like',\n              'meta_query' => array(\n                array(\n                  'key' => 'liked_professor_id',\n                  'compare' => '=',\n                  'value' => get_the_ID()\n                )\n              )\n            ));\n\n             if ($existQuery->found_posts) {\n               $existStatus = 'yes';\n             }\n\n           ?>\n\n          <span class=\"like-box\" data-professor=\"<?php the_ID(); ?>\" data-exists=\"<?php echo $existStatus; ?>\">\n            <i class=\"fa fa-heart-o\" aria-hidden=\"true\"></i>\n            <i class=\"fa fa-heart\" aria-hidden=\"true\"></i>\n            <span class=\"like-count\"><?php echo $likeCount->found_posts; ?></span>\n          </span>\n          <?php the_content(); ?>\n        </div> \n\n      </div>\n  \t</div>\n  \n    <?php \n\n      $relatedPrograms = get_field('related_program');\n\n      if ($relatedPrograms) {\n\n      echo '<hr class=\"section-break\">';\n      echo '<h2 class=\"hedline headline--medium\">Subject(s) Taught </h2>'  ;\n      echo '<ul class=\"link-list min-list\">';\n\n      foreach($relatedPrograms as $program) {  ?>\n      <li><a href=\"<?php echo get_the_permalink($program); ?>\"><?php echo get_the_title($program); ?></a></li>\n\n     <?php }\n\n     echo '</ul>';\n\n     \n      }\n\n      \n\n     ?>\n    \n  </div>\n\n\n<?php  }\n\n\n\nget_footer();\n\n ?>",
-			"file": "single-professor.php",
-			"file_size": 2253,
-			"file_write_time": 131725830664101512,
-			"settings":
-			{
-				"buffer_size": 2157,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "inc/like-route.php",
-			"settings":
-			{
-				"buffer_size": 654,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "inc/search-route.php",
-			"settings":
-			{
-				"buffer_size": 3772,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/modules/Like.js",
-			"settings":
-			{
-				"buffer_size": 979,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/modules/MyNotes.js",
-			"settings":
-			{
-				"buffer_size": 3793,
-				"encoding": "UTF-8",
+				"buffer_size": 3123,
 				"line_ending": "Windows"
 			}
 		},
@@ -342,11 +290,11 @@
 		"selected_items":
 		[
 			[
-				"git ",
+				"git",
 				"git: status"
 			],
 			[
-				"git",
+				"git ",
 				"git: status"
 			],
 			[
@@ -407,20 +355,44 @@
 	"expanded_folders":
 	[
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/css",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/inc",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js",
-		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js/modules",
-		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/template-parts",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/mu-plugins"
 	],
 	"file_history":
 	[
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js/modules/Like.js",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/single-professor.php",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/style.css",
+		"/C/OpenServer/domains/LNAUniversity-site-for-Deploy/gulpfile.js",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/index.php",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/inc/like-route.php",
+		"/C/OpenServer/domains/LNAUniversity-site-for-Deploy/wp-content/themes/University_theme/index.php",
+		"/C/OpenServer/domains/LNAUniversity-site-for-Deploy/settings.js",
+		"/C/OpenServer/domains/LNAUniversity-site-for-Deploy/wp-content/themes/University_theme/front-page.php",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/inc/search-route.php",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js/modules/MyNotes.js",
+		"/C/OpenServer/domains/LNAUniversity-site/gulpfile.js",
+		"/C/OpenServer/domains/LNAUniversity-site/package.json",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js/scripts.js",
+		"/C/OpenServer/domains/LNAUniversity-site/webpack.config.js",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js/scripts-bundled.js",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/header.php",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/page-my-notes.php",
+		"/C/OpenServer/domains/LNAUniversity-site/settings.js",
+		"/C/OpenServer/domains/LNAUniversity-site/readme.html",
+		"/C/OpenServer/domains/LNAUniversity-site/package-lock.json",
+		"/C/OpenServer/domains/LNAUniversity-site/index.php",
+		"/C/OpenServer/domains/LNAUniversity-site/.gitignore",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-admin/widgets.php",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/index.php",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/index.php",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js/modules/HeroSlider.js",
+		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js/modules/Search.js",
 		"/C/Users/Anato/Downloads/79-end/fictional-university-theme/functions.php",
 		"/C/Users/Anato/Downloads/79-end/fictional-university-theme/js/modules/MyNotes.js",
 		"/C/Users/Anato/Downloads/79-end/fictional-university-theme/page-my-notes.php",
-		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js/modules/Search.js",
-		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/header.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/template-parts/content-professor.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/template-parts/content-program.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/template-parts/content-post.php",
@@ -433,19 +405,15 @@
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/archive.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/page-past-events.php",
 		"/C/Users/Anato/Downloads/67-end/fictional-university-theme/template-parts/content-professor.php",
-		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/inc/search-route.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/single-program.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/footer.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/mu-plugins/university-post-types.php",
-		"/C/OpenServer/domains/LNAUniversity-site/.gitignore",
 		"/C/Users/Anato/Downloads/52-end/fictional-university-theme/js/modules/Search.js",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/archive-campus.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/single-campus.php",
 		"/C/Users/Anato/Downloads/43-end/fictional-university-theme/single-campus.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/js/modules/GoogleMap.js",
-		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/single-professor.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/single-event.php",
-		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/index.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/front-page.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/archive-event.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/template-parts/content-event.php",
@@ -455,8 +423,6 @@
 		"/C/Users/Anato/Downloads/34-end/34-end/mu-plugins/university-post-types.php",
 		"/C/Users/Anato/Downloads/34-end/34-end/themes/fictional-university-theme/page.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/css/modules/acf-map.css",
-		"/C/OpenServer/domains/LNAUniversity-site/gulpfile.js",
-		"/C/OpenServer/domains/LNAUniversity-site/settings.js",
 		"/C/openserver/domains/LNAUniversity-site/settings.js",
 		"/C/openserver/domains/LNAUniversity-site/package.json",
 		"/C/OpenServer/domains/LUANBlog/wp-content/themes/luan-blog/sass/main.sass",
@@ -478,7 +444,6 @@
 		"/C/Users/Anato/Downloads/LNAUniversity-site-master/style.css",
 		"/C/openserver/domains/LNAUniversity-site/wp-content/themes/University_theme/style.css",
 		"/C/openserver/domains/LNAUniversity-site/wp-content/themes/University_theme/css/style.css",
-		"/C/OpenServer/domains/LNAUniversity-site/package.json",
 		"/D/Web_work/WorkNotes/WordPress/LNAUniversity_site/files origin from author for gulp/fictional-university/.gitignore",
 		"/C/openserver/domains/LUANBlog/wp-content/themes/luan-blog/functions.php",
 		"/D/Web_work/_practice_5_WP_CV_LP/WP_Theme_CV/MyTheme/style.css",
@@ -489,7 +454,6 @@
 		"/C/openserver/domains/WPRestaurant/wp-content/themes/resto/footer.php",
 		"/C/openserver/domains/WPRestaurant/wp-content/themes/resto/index.php",
 		"/C/openserver/domains/LUANBlog/wp-content/themes/luan-blog/css/style.css",
-		"/C/OpenServer/domains/LNAUniversity-site/wp-content/themes/University_theme/style.css",
 		"/C/openserver/domains/LUANBlog/wp-content/themes/luan-blog/blog.html",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-admin/plugins.php",
 		"/C/OpenServer/domains/LNAUniversity-site/wp-admin/plugin-install.php",
@@ -525,24 +489,7 @@
 		"/D/Web_work/_MyBlog/ready_html/app/sass/_mixins/_font-face.sass",
 		"/C/Users/Anato/Downloads/xIAtSaglM8LZOYdGmG1JqQ/index.html",
 		"/D/Web_work/_practice_2_goldHair/ready_html/app/js/common.js",
-		"/D/Web_work/_practice_2_goldHair/ready_html/gulpfile.js",
-		"/D/Web_work/_MyBlog/ready_html/app/js/scripts.min.js",
-		"/D/Web_work/_MyBlog/design/flex notes.txt",
-		"/D/Web_work/_practice_2_goldHair/ready_html/app/sass/main.sass",
-		"/C/Users/Anato/OneDrive/_practice_5_WP_CV_LP/js/common.js",
-		"/D/Web_work/_bur-kut site/ready_bur_html/app/index.html",
-		"/C/Users/Anato/www.roshen.com/index.html",
-		"/C/Users/Anato/luancv.000webhostapp.com/index.html",
-		"/C/Users/Anato/luancv.000webhostapp.com/wp-content/themes/MyTheme/js/common.js",
-		"/C/Users/Anato/www.bur-kut.com.ua/index.html",
-		"/D/Web_work/_bur-kut site/ready_bur_html/sass/header.sass",
-		"/D/Web_work/_MyBlog/ready_html/readme.md",
-		"/D/Web_work/_practice_2_goldHair/ready_html/app/sass/_fonts.sass",
-		"/D/Web_work/_MyBlog/ready_html/app/sass/_media.sass",
-		"/D/Web_work/_MyBlog/ready_html/app/sass/_vars.sass",
-		"/D/Web_work/_practice_2_goldHair/ready_html/app/js/scripts.min.js",
-		"/D/Web_work/_practice_5_WP_CV_LP/WP/wp-content/themes/MyTheme/theme-options.php",
-		"/D/Web_work/_practice_5_WP_CV_LP/WP/wp-content/themes/MyTheme/functions.php"
+		"/D/Web_work/_practice_2_goldHair/ready_html/gulpfile.js"
 	],
 	"find":
 	{
@@ -560,6 +507,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".generic-content",
 			"Note",
 			"Professor",
 			"span",
@@ -588,24 +536,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "header.php",
-					"semi_transient": false,
+					"file": "single-program.php",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 2777,
+						"buffer_size": 3123,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2243,
-								2243
+								1156,
+								1156
 							]
 						],
 						"settings":
@@ -618,220 +566,8 @@
 								{
 									"1":
 									[
-										2533,
-										2534
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										2260,
-										2261
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.clone_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										2242,
-										2243
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1778,
-										1779
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"bs_sintax": "php",
-							"buffer_scroll_name": "b8684997",
-							"git_savvy.repo_path": "C:\\OpenServer\\domains\\LNAUniversity-site\\wp-content\\themes\\University_theme",
-							"spell_check": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 756.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "page-my-notes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1866,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								521,
-								521
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.clone": -1,
-							"bracket_highlighter.clone_locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										877,
-										881
+										1583,
+										1585
 									]
 								},
 								"icon":
@@ -846,219 +582,8 @@
 								{
 									"1":
 									[
-										772,
-										776
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.clone_regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										522,
-										523
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
-										"region.greenish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										510,
-										511
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"bs_sintax": "plain text",
-							"buffer_scroll_name": "55f47a5c",
-							"git_savvy.repo_path": "C:\\OpenServer\\domains\\LNAUniversity-site\\wp-content\\themes\\University_theme",
-							"spell_check": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 358.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "single-professor.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2157,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1576,
-								1576
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.clone": -1,
-							"bracket_highlighter.clone_locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										2134,
-										2135
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										43,
-										44
+										1227,
+										1229
 									]
 								},
 								"unmatched":
@@ -1072,26 +597,16 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -1117,11 +632,21 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
 							"bracket_highlighter.locations":
 							{
@@ -1129,24 +654,24 @@
 								{
 									"1":
 									[
-										2134,
-										2135
+										1172,
+										1173
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"region.yellowish"
 									]
 								},
 								"open":
 								{
 									"1":
 									[
-										43,
-										44
+										1139,
+										1140
 									]
 								},
 								"unmatched":
@@ -1160,26 +685,16 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -1205,14 +720,24 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
 							"bs_sintax": "php",
-							"buffer_scroll_name": "d9b6f9e3",
+							"buffer_scroll_name": "91c19ddc",
 							"git_savvy.repo_path": "C:\\OpenServer\\domains\\LNAUniversity-site\\wp-content\\themes\\University_theme",
 							"spell_check": false,
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
@@ -1220,220 +745,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 860.0,
+						"translation.y": 666.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "inc/like-route.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 654,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								444,
-								444
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.clone": -1,
-							"bracket_highlighter.clone_locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										597,
-										598
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"region.yellowish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										443,
-										444
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.clone_regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										597,
-										598
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"region.yellowish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										443,
-										444
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"bs_sintax": "plain text",
-							"buffer_scroll_name": "93658f58",
-							"git_savvy.repo_path": "C:\\OpenServer\\domains\\LNAUniversity-site\\wp-content\\themes\\University_theme",
-							"spell_check": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1443,609 +758,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 4,
-					"file": "inc/search-route.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3772,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								164,
-								244
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.clone": -1,
-							"bracket_highlighter.clone_locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										172,
-										173
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
-										"region.greenish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										164,
-										165
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.clone_regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										172,
-										173
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
-										"region.greenish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										164,
-										165
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"bs_sintax": "php",
-							"buffer_scroll_name": "605062d7",
-							"git_savvy.repo_path": "C:\\OpenServer\\domains\\LNAUniversity-site\\wp-content\\themes\\University_theme",
-							"spell_check": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "js/modules/Like.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 979,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								418,
-								418
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.clone": -1,
-							"bracket_highlighter.clone_locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										352,
-										353
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"region.yellowish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										351,
-										352
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.clone_regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										417,
-										418
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"region.yellowish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										402,
-										403
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"bs_sintax": "plain text",
-							"buffer_scroll_name": "7e61f190",
-							"git_savvy.repo_path": "C:\\OpenServer\\domains\\LNAUniversity-site\\wp-content\\themes\\University_theme",
-							"spell_check": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/modules/MyNotes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3793,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3793,
-								3770
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.clone": -1,
-							"bracket_highlighter.clone_locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.clone_regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"bs_sintax": "plain text",
-							"buffer_scroll_name": "45fa6e02",
-							"git_savvy.repo_path": "C:\\OpenServer\\domains\\LNAUniversity-site\\wp-content\\themes\\University_theme",
-							"spell_check": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2160.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
+					"buffer": 1,
 					"file": "functions.php",
 					"semi_transient": false,
 					"settings":
@@ -2057,8 +770,8 @@
 						"selection":
 						[
 							[
-								27,
-								27
+								4768,
+								4768
 							]
 						],
 						"settings":
@@ -2069,12 +782,27 @@
 							{
 								"close":
 								{
+									"1":
+									[
+										886,
+										887
+									]
 								},
 								"icon":
 								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
 								},
 								"open":
 								{
+									"1":
+									[
+										143,
+										144
+									]
 								},
 								"unmatched":
 								{
@@ -2082,61 +810,61 @@
 							},
 							"bracket_highlighter.clone_regions":
 							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"bracket_highlighter.locations":
 							{
@@ -2155,61 +883,61 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
 							"bs_sintax": "php",
 							"buffer_scroll_name": "7d18a386",
@@ -2222,11 +950,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 2,
 					"file": "/C/OpenServer/domains/LNAUniversity-site/wp-content/mu-plugins/university-post-types.php",
 					"semi_transient": false,
 					"settings":
@@ -2238,8 +966,8 @@
 						"selection":
 						[
 							[
-								2551,
-								2551
+								585,
+								592
 							]
 						],
 						"settings":
@@ -2252,24 +980,24 @@
 								{
 									"1":
 									[
-										2819,
-										2820
+										2815,
+										2816
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"region.yellowish"
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
 									]
 								},
 								"open":
 								{
 									"1":
 									[
-										2493,
-										2494
+										41,
+										42
 									]
 								},
 								"unmatched":
@@ -2278,61 +1006,61 @@
 							},
 							"bracket_highlighter.clone_regions":
 							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"bracket_highlighter.locations":
 							{
@@ -2340,24 +1068,24 @@
 								{
 									"1":
 									[
-										2809,
-										2810
+										592,
+										593
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"region.yellowish"
+										"Packages/BracketHighlighter/icons/single_quote.png",
+										"region.greenish"
 									]
 								},
 								"open":
 								{
 									"1":
 									[
-										2493,
-										2494
+										584,
+										585
 									]
 								},
 								"unmatched":
@@ -2366,74 +1094,75 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
 							"bs_sintax": "php",
 							"buffer_scroll_name": "eb9fa2bb",
+							"git_savvy.repo_path": "C:\\OpenServer\\domains\\LNAUniversity-site",
 							"spell_check": false,
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1526.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -2531,15 +1260,15 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
-	"side_bar_width": 203.0,
+	"side_bar_visible": true,
+	"side_bar_width": 240.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
