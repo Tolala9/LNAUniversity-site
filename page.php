@@ -8,10 +8,10 @@
     <?php pageBanner(array(
       'title' => get_the_title(),
       'subtitle' => get_field('page_banner_subtitle'),
-      'photo' => 'https://images.unsplash.com/photo-1510440777527-38815cfc6cc2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=06326529ec9d1ca2c6b2e8725026f699&auto=format&fit=crop&w=890&q=80',
+      // 'photo' => 'https://images.unsplash.com/photo-1510440777527-38815cfc6cc2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=06326529ec9d1ca2c6b2e8725026f699&auto=format&fit=crop&w=890&q=80',
     )); ?>
 
-    page page
+
   
 
     <div class="container container--narrow page-section">
@@ -56,10 +56,6 @@
 
     <div class="generic-content">
       <?php the_content(); 
-
-      if (get_query_var('skyColor') == 'blue') {
-        echo '<p> Sky is blue today! </p>';
-      }
 
       ?>
     </div>

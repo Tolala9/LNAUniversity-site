@@ -25,7 +25,7 @@ while (have_posts()) {
       if ($relatedPrograms) {
 
       echo '<hr class="section-break">';
-      echo '<h2 class="hedline headline--medium">Related Program(s)</h2>'  ;
+      echo '<h2 class="hedline headline--medium">Related Faculties:</h2>'  ;
       echo '<ul class="link-list min-list">';
 
       foreach($relatedPrograms as $program) {  ?>

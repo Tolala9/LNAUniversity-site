@@ -2,8 +2,9 @@
 get_header(); ?> 
 
 <?php pageBanner(array(
-  'title' => 'All Programs',
-  'subtitle' => 'There is something for everyone. Heve a look around.'
+  'title' => 'All faculties',
+  'subtitle' => 'There is something for everyone. Heve a look around.',
+  'photo' =>  get_theme_file_uri('images/programs.jpg')
  )); ?>
 
 

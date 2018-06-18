@@ -6,6 +6,8 @@
   &--large {
     /*color: #1f1f;*/
     font-size: 3.6rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
     @mixin atSmall {
       font-size: 6.25rem;
     }
@@ -18,7 +20,7 @@
 
   &--medium {
     font-size: 1.9rem;
-    margin-bottom: .75rem;
+    margin-bottom: 3rem;
     @mixin atSmall {
       font-size: 3.125rem;
     }

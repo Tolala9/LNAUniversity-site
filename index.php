@@ -3,12 +3,13 @@
 
  <?php pageBanner(array(
   'title' => 'Wellcome to our blog!',
-  'subtitle' => 'Keep up with our latest news'
+  'subtitle' => 'Keep up with our latest news',
+  'photo' =>  get_theme_file_uri('images/blog-banner.jpg')
  )); ?>
 
  
 
-index page~
+
 <div class="container container--narrow page-section">
 	<?php 
 		while (have_posts()) {

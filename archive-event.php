@@ -3,7 +3,8 @@
 
  <?php pageBanner(array(
   'title' => 'All events',
-  'subtitle' => 'See what is going on in our world.'
+  'subtitle' => 'See what is going on in our world.',
+  'photo' =>  get_theme_file_uri('images/events-banner.jpg')
  )); ?>
 
 
