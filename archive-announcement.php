@@ -2,11 +2,12 @@
  get_header(); ?> 
 
  <?php pageBanner(array(
-  'title' => get_the_archive_title(),
-  'subtitle' => get_field('page_banner_subtitle')
+  'title' => '.',
+  'subtitle' => 'Keep up with our latest announcements',
+  'photo' =>  get_theme_file_uri('images/Announcements.jpg')
  )); ?>
 
-
+ 
 
 
 <div class="container container--narrow page-section">
