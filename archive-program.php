@@ -12,7 +12,7 @@ get_header(); ?>
 
 <div class="container container--narrow page-section">
 
-  <ul class="link-list min-list">
+  <ul class="link-list-program min-list">
   	<?php 
 
 

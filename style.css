@@ -2257,7 +2257,7 @@ margin: 20px 0;
 .link-list li {
     padding: 1rem 0;
     font-size: 1.5rem;
-    border-bottom: 1px dotted #DEDEDE;
+    border-bottom: 1px dotted #DEDEDE; 
   }
 
 .search-overlay .link-list li {
@@ -2271,6 +2271,35 @@ margin: 20px 0;
 .link-list a {
     color: #305f1d;
   }
+
+.link-list-program li {
+        width: 70%;
+        padding: 0 0;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        background-color: #305f1d;
+        text-align: center;
+        border-radius: 4px; 
+      }
+
+.search-overlay .link-list-program li {
+          font-size: 1.3rem;
+        }
+
+.link-list-program li:hover{
+        background: -webkit-gradient(linear, left top, left bottom, from(rgb(58, 135, 28)), to(#305f1d));
+        background: linear-gradient(rgb(58, 135, 28), #305f1d);
+      }
+
+.link-list-program li:last-child {
+        border-bottom: none;
+      }
+
+.link-list-program a {
+        color: #e9eff0;
+        display: block;
+        line-height: 4.375rem;
+      }
 
 .metabox {
   background-color: #e9eff0;
