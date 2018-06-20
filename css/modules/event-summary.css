@@ -6,7 +6,7 @@
   margin-bottom: 20px;
 
   &__title a {
-    color: #173f58;
+    color: $mainBlue;
   }
 
   &__date {

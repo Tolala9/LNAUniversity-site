@@ -4,6 +4,8 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="with=device-width, initial-scale=1">
 	<?php wp_head(); ?>
+  <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon/LNAU-fav-48x48.png" >
+  
 </head>
 <body <?php body_class(); ?>>
 
