@@ -13975,10 +13975,10 @@ function () {
           xhr.setRequestHeader('X-WP-Nonce', universityData.nonce);
         },
         url: universityData.root_url + '/wp-json/university/v1/manageLike',
+        type: 'DELETE',
         data: {
           'like': currentLikeBox.attr('data-like')
         },
-        type: 'DELETE',
         success: function success(responce) {
           currentLikeBox.attr('data-exists', 'no');
           var likeCount = parseInt(currentLikeBox.find(".like-count").html(), 10);
