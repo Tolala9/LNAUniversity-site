@@ -21,20 +21,20 @@ This project has a simple and clean design with only most important features. La
 
 ## Also
 
-[x] All site are adaptive & responsive on all divices:
+ [x] All site are adaptive & responsive on all divices:
  - Mobile S/M/L - 320px/375px/425px
  - Tablet - 768px
  - Laptop/laptop L/ - 1024px/1440px
 
 ### Used technics/plugins/tools
 
-[x] HTML5, BEM;
-[x] CSS3, Flexbox, PostCSS; 
-[x] GIT, Gulp, Webpack;
-[x] ES6, JQuery, Babel;
-[x] PHP, Wordpress;
-[x] REST API, JSON, AJAX;
-[x] Postman.
+ [x] HTML5, BEM;
+ [x] CSS3, Flexbox, PostCSS; 
+ [x] GIT, Gulp, Webpack;
+ [x] ES6, JQuery, Babel;
+ [x] PHP, Wordpress;
+ [x] REST API, JSON, AJAX;
+ [x] Postman.
 
 ### Author contacts
 
