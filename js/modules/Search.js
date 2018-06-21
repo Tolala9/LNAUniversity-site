@@ -59,8 +59,8 @@ class Search {
 									${results.generalInfo.length ? '</ul>' : ''}
 							</div>
 							<div class="one-third">
-								<h2 class="search-overlay__section-title">Programs</h2>
-									${results.programs.length ? '<ul class="link-list min-list">' : `<p>No programs matches that search. <a href="${universityData.root_url}/programs">View all programs</a></p>`} 
+								<h2 class="search-overlay__section-title">Faculties</h2>
+									${results.programs.length ? '<ul class="link-list min-list">' : `<p>No faculties matches that search. <a href="${universityData.root_url}/programs">View all programs</a></p>`} 
 									${results.programs.map(item => `<li><a href="${item.permalink}">${item.title}</a> </li>`).join('')}
 									${results.programs.length ? '</ul>' : ''}
 								<h2 class="search-overlay__section-title">Professors</h2>
